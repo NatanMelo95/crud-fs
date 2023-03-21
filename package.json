@@ -4,7 +4,7 @@
   "description": "api veículos",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon ./index.js"
+    "test": "nodemon ./src/index.js"
   },
   "keywords": [
     "veículos"
