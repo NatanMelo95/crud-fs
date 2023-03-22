@@ -1,11 +1,1 @@
-[
-    {
-        "id": "1",
-        "placa": "LQD1046" ,
-        "chassi": "1234560",
-        "renavam": "56489123",
-        "modelo": "UNO",
-        "marca": "FIAT",
-        "ano": "2005"
-    }
-]
+[{"id":1,"placa":"LQD1046","chassi":"1234560","renavam":"56489123","modelo":"UNO","marca":"FIAT","ano":"2005"},{"id":2,"placa":"LQD1046","chassi":"56489123","renavam":"1234560","modelo":"FOCUS","marca":"FORD","ano":"2015"},{"id":3,"placa":"POO1520","chassi":"56489123","renavam":"1234560","modelo":"FIESTA","marca":"FORD","ano":"2015"}]
