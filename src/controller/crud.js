@@ -26,8 +26,7 @@ const control = {
 }
 
 router.get('/veiculo', (req, res) => {
-    console.log(control.read())
-    return control.read()
+    res.json(control.read())
 })
 router.get('/veiculo/:id', jsonParser, (req, res) => {
     const dados = control.read()
@@ -35,18 +34,17 @@ router.get('/veiculo/:id', jsonParser, (req, res) => {
     dados.forEach(veiculo => {
         if (veiculo.id == paramId) {
             console.log(veiculo)
-            return veiculo
+            res.json(veiculo)
         } else {
-            return console.log('Veículo não encontrado')
+            console.log('Veículo não encontrado')
         }    
     })
 })
 router.post('/create', jsonParser, (req, res) => {
     const dados = control.read()
     const qtdDados = dados.length
-    console.log(req.body.placa)
     if (req.body == undefined) {
-        return console.log("Erro ao cadastrar veículo")
+        console.log("Erro ao cadastrar veículo")
     } else {
         const novoVeiculo = new veiculos()
         novoVeiculo.id = qtdDados + 1
@@ -57,14 +55,14 @@ router.post('/create', jsonParser, (req, res) => {
         novoVeiculo.marca = req.body.marca
         novoVeiculo.ano = req.body.ano
         control.write(novoVeiculo)
-        return console.log("Veículo cadastrado")    
+        const msg = "Veículo cadastrado"
+        res.send(msg)
     }
 })
 router.put('/update/:id', jsonParser, (req, res) => {
     const dados = control.read()
     const id = req.params.id
     dados.forEach(veiculo => {
-        console.log(veiculo.id)
         if (veiculo.id == id) {
             const novoVeiculo = new veiculos()
             novoVeiculo.id = veiculo.id
@@ -76,9 +74,9 @@ router.put('/update/:id', jsonParser, (req, res) => {
             novoVeiculo.ano = req.body.ano
             control.delete(novoVeiculo)
             control.write(novoVeiculo)
-            return console.log('Veículo editado')
+            res.send('Veículo editado')
         } else {
-            return console.log('Veículo não encontrado')
+            console.log('Veículo não encontrado')
         }
     })
 })
@@ -89,9 +87,9 @@ router.delete('/delete/:id', jsonParser, (req, res) => {
         console.log(veiculo.id)
         if (veiculo.id == id) {
             control.delete(veiculo)
-            return console.log('Veículo deletado')
+            res.send('Veículo deletado')
         } else {
-            return console.log('Veículo não encontrado')
+            console.log('Veículo não encontrado')
         }
     })
 })
